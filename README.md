@@ -1,5 +1,5 @@
 # Ziqx Auth
-This package is a simple authentication package for [Ziqx](https://ziqx.in) Auth.
+Simple and minimal authentication package for [Ziqx](https://ziqx.in) Auth.
 
 You can use this package to authenticate users in your application.
 You must get the API key and get your app registered with Ziqx Ecosystem to use this package.
