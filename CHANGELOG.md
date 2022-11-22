@@ -9,3 +9,6 @@ Updated Example
 
 ## 0.0.4
 Switched to [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview) for better performance.
+
+## 0.0.5
+Error logs and return errors

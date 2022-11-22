@@ -14,7 +14,11 @@ ZiqxAuth.authenticate(
     app: APP_NAME,
     onSuccess: (res) {
         // Do something with the response
-    }
+    },
+    onError: (err) {
+        // Do something with the error
+    },
+    toolBarColor: Colors.black
 
 );
 // Once the user is authenticated, you can get the user details as response.

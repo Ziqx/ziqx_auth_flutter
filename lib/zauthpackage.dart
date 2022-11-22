@@ -14,17 +14,40 @@ class ZiqxAuth {
       required String api,
       required String app,
       required Function(dynamic) onSuccess,
+      required Function(dynamic) onError,
       Color toolBarColor = Colors.black}) async {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text('Authenticating...'),
+      backgroundColor: toolBarColor,
+    ));
     await createSession(api, app).then((value) async {
-      print("Value is:$value");
       if (value['status'] == 'success') {
         String sessionId = value['data']['key'];
-        ZauthLaunchAuth(browser, sessionId, toolBarColor);
+        ZauthLaunchAuth(browser, sessionId, toolBarColor,(e){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text('Authentication failed, Please try again'),
+            backgroundColor: Colors.red[800],
+          ));
+          onError({
+        'status': 'error',
+        'message': 'Something went wrong, Probably network error',
+        'log': e.toString()
+      });
+
+        });
         verFunc(sessionId, api, (data) {
           onSuccess(data);
           browser.close();
         });
+      } else {
+        onError(value);
       }
+    }).catchError((er) {
+      onError({
+        'status': 'error',
+        'message': 'Something went wrong, Probably network error',
+        'log': er.toString()
+      });
     });
   }
 }
