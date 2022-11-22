@@ -1,6 +1,6 @@
 name: ziqx_auth
 description: A fast and easy way to authenticate users with Ziqx Auth
-version: 0.0.3
+version: 0.0.4
 homepage: https://ziqx.in
 repository: https://github.com/Ziqx/ziqx_auth_flutter
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.5
-  flutter_custom_tabs: ^1.0.4
+  flutter_inappwebview: ^5.7.1+2
 
 dev_dependencies:
   flutter_test:

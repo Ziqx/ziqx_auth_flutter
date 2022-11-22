@@ -6,3 +6,6 @@ Updated Repo
 
 ## 0.0.3
 Updated Example
+
+## 0.0.4
+Switched to [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview) for better performance.
