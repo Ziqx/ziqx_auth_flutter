@@ -34,7 +34,7 @@ ZiqxAuth.authenticate(
             "app": "ziqx", 
             "createdAt": 1668996733300, 
             "isVerified": true, 
-            "userId":uid,
+            "token":token,
             "key": "p66dx5lq3yar"
         }
 }

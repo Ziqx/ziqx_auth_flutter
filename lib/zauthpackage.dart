@@ -18,7 +18,7 @@ class ZiqxAuth {
       Color toolBarColor = Colors.black}) async {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: const Text('Authenticating...'),
-      backgroundColor: toolBarColor,
+      backgroundColor: Colors.green[800],
     ));
     await createSession(api, app).then((value) async {
       if (value['status'] == 'success') {
