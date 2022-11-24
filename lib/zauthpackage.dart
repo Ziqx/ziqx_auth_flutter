@@ -23,19 +23,19 @@ class ZiqxAuth {
     await createSession(api, app).then((value) async {
       if (value['status'] == 'success') {
         String sessionId = value['data']['key'];
-        ZauthLaunchAuth(browser, sessionId, toolBarColor,(e){
+        ZauthLaunchAuth(browser, sessionId, toolBarColor, (e) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text('Authentication failed, Please try again'),
             backgroundColor: Colors.red[800],
           ));
           onError({
-        'status': 'error',
-        'message': 'Something went wrong, Probably network error',
-        'log': e.toString()
-      });
-
+            'status': 'error',
+            'message': 'Something went wrong, Probably network error',
+            'log': e.toString()
+          });
         });
-        verFunc(sessionId, api, (data) {
+        await verFunc(sessionId, api, (data) {
+          print("🔌 Logged in to Ziqx Auth");
           onSuccess(data);
           browser.close();
         });
@@ -53,12 +53,14 @@ class ZiqxAuth {
 }
 
 verFunc(sessionId, api, onDone) async {
-  verifySession(sessionId, api).then((sessionData) {
+  print("🔒 Checking for verification [Session: $sessionId]...");
+  await verifySession(sessionId, api).then((sessionData) {
     if (sessionData['data']['isVerified'] == true) {
+      print("✅ Authentication Verified");
       onDone(sessionData);
     } else {
-      Future.delayed(const Duration(seconds: 3), () {
-        verFunc(sessionId, api, onDone);
+      Future.delayed(const Duration(seconds: 3), () async {
+        await verFunc(sessionId, api, onDone);
       });
     }
   });

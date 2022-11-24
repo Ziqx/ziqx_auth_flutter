@@ -12,3 +12,7 @@ Switched to [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview
 
 ## 0.0.5
 Error logs and return errors
+
+## 0.0.6
+Login delay fixed
+Console Logs added
